@@ -1,0 +1,12 @@
+#__next {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html, body {
+  height: full;
+  width: full;
+}
+
