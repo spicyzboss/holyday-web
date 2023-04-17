@@ -55,7 +55,7 @@ export default function Home() {
       <Flex direction='column' w='full' align='center' gap='4' p='4' maxW='8xl'>
         {
           responses.map((response, index) => (
-            <Text as='pre' w='full' key={index}>{response.Content}</Text>
+            <Text as='pre' key={index}>{response.Content}</Text>
           ))
         }
         <Input w='full' placeholder='Let&apos;s say your plan...' value={message} onChange={(e) => setMessage(e.target.value)} />
