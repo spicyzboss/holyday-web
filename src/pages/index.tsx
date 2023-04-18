@@ -47,6 +47,8 @@ export default function Home() {
     console.log('data', data);
 
     setResponses((prev) => [...prev, { Role: 'assistant', Content: data.message }]);
+    
+    setIsLoading(false);
 
     setMessage('');
   }
