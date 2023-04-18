@@ -5,14 +5,13 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { HashLoader } from 'react-spinners'
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5000';
-
 type Message = {
   Role: string;
   Content: string;
 }
 
 export default function Home() {
+  const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5000';
   const [message, setMessage] = useState<string>('')
   const [responses, setResponses] = useState<Message[]>([])
   const router = useRouter();
