@@ -11,7 +11,7 @@ type Message = {
 }
 
 export default function Home() {
-  const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5000';
+  const BACKEND_URL = process.env.BACKEND_URL || 'https://holyday-api.spicyz.io';
   const [message, setMessage] = useState<string>('')
   const [responses, setResponses] = useState<Message[]>([])
   const router = useRouter();
