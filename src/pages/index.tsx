@@ -16,6 +16,7 @@ export default function Home() {
   const [responses, setResponses] = useState<Message[]>([])
   const router = useRouter();
   const { data: session, status } = useSession();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   if (status === 'loading') return <HashLoader color='#ECC94B' speedMultiplier={1.25} />;
 
@@ -26,6 +27,9 @@ export default function Home() {
 
   const handleSubmit = async () => {
     if (!message.trim()) return;
+    
+    setIsLoading(true);
+    setResponses((prev) => [...prev, { Role: 'user', Content: message.trim() }]);
 
     const res = await fetch(`${BACKEND_URL}/api/plan`, {
       method: 'POST',
@@ -35,8 +39,6 @@ export default function Home() {
       },
       body: JSON.stringify({ messages: [...responses, { Role: 'user', Content: message.trim() }] })
     });
-
-    setResponses((prev) => [...prev, { Role: 'user', Content: message.trim() }]);
 
     if (res.status !== 200) return console.log('error', res.statusText);
 
@@ -58,7 +60,7 @@ export default function Home() {
           ))
         }
         <Input w='full' placeholder='Let&apos;s say your plan...' value={message} onChange={(e) => setMessage(e.target.value)} />
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button onClick={handleSubmit} isLoading={isLoading}>Submit</Button>
       </Flex>
     </MainLayout>
   )
