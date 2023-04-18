@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { HashLoader } from 'react-spinners'
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:4000'
+const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5000';
 
 type Message = {
   Role: string;
